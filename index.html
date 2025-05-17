@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva Bautizo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fff5f7;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            padding: 30px;
+            margin: 0;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: #be676c;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-weight: 300;
+            color: #be676c;
+            margin-bottom: 30px;
+        }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #be676c;
+        }
+        .box {
+            background-color: #ffffff;
+            border: 2px solid #be676c;
+            border-radius: 20px;
+            padding: 20px;
+            width: 100px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .label {
+            font-size: 14px;
+            font-weight: 300;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bautizo de Valentina</h1>
+    <h2>¡Cada día más cerca!</h2>
+
+    <div id="countdown">
+        <div class="box">
+            <div id="days">0</div>
+            <div class="label">Días</div>
+        </div>
+        <div class="box">
+            <div id="hours">0</div>
+            <div class="label">Horas</div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const countdownDate = new Date("August 16, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "¡El gran día ha llegado!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 3600000); // Actualiza cada hora
+    </script>
+
+</body>
+</html>
